@@ -1,19 +1,10 @@
-import telegram
-from telegram.ext import Updater
-from telegram.ext import CommandHandler
+import telebot
 
-updater = Updater(token=''
-#bot = telegram.Bot(token='675906131:AAEUPR53yFAudLYHoX72VQDOcQpmpjbZTBM')
+bot = telebot.TeleBot("675906131:AAEUPR53yFAudLYHoX72VQDOcQpmpjbZTBM")
 
-def start(bot, update):
-    bot.send_message(chat_id=update.message.chat_id, text="Hello, that is a test!!")
+@bot.message_handler(func=lambda message: True)
+def echo_all(message):
+    bot.reply_to(message, "Em breve responderemos!!!")
 
 
-start_handler = CommandHandler('start', start)
-dispatcher.add_handler(start_handler)
-
-updater.start_polling()
-#print(bot.get_me())
-
-
-
+bot.polling()
